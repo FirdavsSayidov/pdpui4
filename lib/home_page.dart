@@ -11,141 +11,140 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
+    return Scaffold(backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white,
         elevation: 0,
-        leading: null,
-        title: Text('Cars',style: TextStyle(color: Colors.black,fontSize: 25),),
-        brightness: Brightness.light,
-        actions: <Widget> [
-          IconButton(onPressed: (){}, icon: Icon(Icons.notifications_none,color: Colors.black,)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart,color: Colors.black,))
+        title: Text('Cars',style: TextStyle(color: Colors.red),),
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.notifications_none,color: Colors.red,)),
+          IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart,color: Colors.red,))
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(20),
+        child: Container(padding: EdgeInsets.all(20),
           child: Column(
             children: [
               Container(
-                height: 40,
+                height:40,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    singleTab(true, 'All'),
-                    singleTab(false, 'red'),
-                    singleTab(false, 'blue'),
-                    singleTab(false, 'Green'),
-                    singleTab(false, 'Grey'),
-
-
+                    singleTab(true,'All'),
+                    singleTab(false,'Red'),
+                    singleTab(false,'Blue'),
+                    singleTab(false,'Black'),
+                    singleTab(false,'Yellow'),
+                    singleTab(false,'Pink'),
 
 
 
                   ],
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
+
               makeItem('assets/images/img.png'),
               makeItem('assets/images/img_1.png'),
-              makeItem('assets/images/img_2.png'),
-              makeItem('assets/images/img_3.png'),
-              makeItem('assets/images/img_4.png'),
-              makeItem('assets/images/img.png'),
-              makeItem('assets/images/img_1.png'),
+              makeItem('assets/images/img_2.png')
 
             ],
           ),
         ),
       ),
-      
     );
   }
-  Widget singleTab(bool type, String text){
+        Widget singleTab(bool type,String text){
     return AspectRatio(aspectRatio: 2.2/1,
     child: Container(
-      margin: EdgeInsets.only(right: 10),
-      decoration: BoxDecoration(
-        color: type ? Colors.grey.shade200 : Colors.white,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Center(
-        child: Text(text,
-        style: TextStyle(fontSize: type ? 20 : 17),
-        ),
-      ),
+     margin: EdgeInsets.only(right: 10),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+          color: type ? Colors.red
+              :Colors.white),
+      child: Center(child: Text(text,style: TextStyle(fontSize: type ? 18 : 15,color: type ?Colors.white :Colors.black),),),
     ),
     );
-  }
-  
+        }
+
   Widget makeItem(String image){
-    return Container(
+
+    return Padding(padding: EdgeInsets.all(8),
+    child:Container(
       height: 250,
-      width: double.infinity,
-      margin: EdgeInsets.only(bottom: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(image: AssetImage(image),
-        fit: BoxFit.cover
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(0,10)
-          )
-        ]
-        
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(image: AssetImage(image,),fit: BoxFit.cover
+          ),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey,
+                offset: Offset(0,10),
+                blurRadius: 10,
+
+
+            )
+          ]
       ),
       child: Container(
-        padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          gradient: LinearGradient(
-            begin: Alignment.bottomRight,
-            colors: [
-              Colors.black.withOpacity(0.9),
-              Colors.black.withOpacity(0.6),
-              Colors.black.withOpacity(0.3),
-              Colors.black.withOpacity(0.2)
-            ]
-          )
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Pdp Car',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
-                    SizedBox(height: 10,),
-                    Text('Electric',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+            borderRadius: BorderRadius.circular(20),
+            gradient: LinearGradient(
+                begin: Alignment.bottomRight,
+                colors: [
+                  Colors.black.withOpacity(0.7),
+                  Colors.black.withOpacity(0.6),
+                  Colors.black.withOpacity(0.5),
+                  Colors.black.withOpacity(0.4),
+                  Colors.black.withOpacity(0.4),
 
-                  ],
-                )),
-                Container(
-                  width: 35,
-                  height: 35,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white
+                ]
+            )
+        ),
+        child: Container(
+          child: Column( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Padding(padding: EdgeInsets.only(left: 20,top: 20,right: 10),
+                        child: Container(
+                          child: Text('PDP Car',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
+                        ),
+                      ),
+
+                      Padding( padding: EdgeInsets.only(top: 20),
+                        child: Container(
+                          child: Text('Electric',style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize:23 ),),
+                        ),
+                      )
+                    ],
                   ),
-                  child: Center(
-                    child: Icon(Icons.favorite_border,size: 20,),
+                  Padding(padding: EdgeInsets.only(top: 10,left: 20),
+                    child: Container(
+                      child: Text('100\$',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 25),),
+                    ),
                   ),
-                )
-              ],
-            ),
-            Text('100\$',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 25),)
-          ],
+                ],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(
+                    child: IconButton(onPressed: (){},
+                        icon: Icon(Icons.favorite_border,color: Colors.white,)),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,color: Colors.red
+                    ),
+                ),
+              )
+            ],
+          ),
+
         ),
       ),
-    );
+
+    )
+    ) ;
   }
   
   
